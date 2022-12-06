@@ -1,0 +1,2 @@
+mechanize==0.4.8
+configparser==5.3.0
