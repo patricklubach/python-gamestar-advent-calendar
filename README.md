@@ -10,18 +10,31 @@ Install dependencies in a virtual environment:
 
 ```shell
 pip3 install --user virtualenv
-virtualenv venv
-source venv/bin/activate
+virtualenv .venv
+source .venv/bin/activate
 
-venv/bin/pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-Set your details in the [`config.ini`](./config.ini) file.
+Create a `config.ini` file by copying the `config.ini.example` file:
 
-```shell
-python3 submit.py
+```bash
+cp config.ini.example config.ini
 ```
 
-Example cronjob: `10 09 * * * cd /home/siw/python-gamestar-advent-calendar && python3 submit.py >/dev/null 2>&1`
+Fill out all the configurations in the `FormatData` section and then run:
+
+```bash
+python3 main.py
+```
+
+## Run scheduled
+
+In order to run the script on a daily schedule add the following line to your crontab (`crontab -e`):
+
+```bash
+# Example cronjob:
+10 09 * * * cd /home/siw/python-gamestar-advent-calendar && python3 main.py >/dev/null 2>&1
+```
